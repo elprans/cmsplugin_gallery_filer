@@ -4,6 +4,7 @@ from cms.models import CMSPlugin
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from inline_ordering.models import Orderable
+from filer.fields.image import FilerImageField
 
 import utils
 
@@ -33,9 +34,7 @@ class Image(Orderable):
         return pages[0].get_media_path(filename)
 
     gallery = models.ForeignKey(GalleryPlugin, verbose_name=_("Gallery"))
-    src = models.ImageField(_("Image file"), upload_to=get_media_path,
-                            height_field='src_height',
-                            width_field='src_width')
+    src = FilerImageField(null=True, blank=True)
     src_height = models.PositiveSmallIntegerField(_("Image height"), editable=False, null=True)
     src_width = models.PositiveSmallIntegerField(_("Image height"), editable=False, null=True)
     title = models.CharField(_("Title"), max_length=255, blank=True)
