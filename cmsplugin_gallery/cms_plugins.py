@@ -4,6 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 
 import admin
 import models
+from forms import GalleryForm
 
 
 class CMSGalleryPlugin(CMSPluginBase):
@@ -12,6 +13,7 @@ class CMSGalleryPlugin(CMSPluginBase):
     inlines = [admin.ImageInline, ]
     name = _('Image gallery')
     render_template = 'cmsplugin_gallery/gallery.html'
+    form = GalleryForm
 
     def render(self, context, instance, placeholder):
         context.update({
