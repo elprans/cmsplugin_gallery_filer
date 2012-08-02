@@ -30,7 +30,7 @@ Installation
 
 #. `pip install cmsplugin_gallery_filer`
 #. Add `'cmsplugin_gallery'` to `INSTALLED_APPS` (if necessary)
-#. Run `syncdb` or `migrate cmsplugin_gallery` if using SOuth
+#. Run `syncdb` or `migrate cmsplugin_gallery` if using South
 
 Configuration
 =============
