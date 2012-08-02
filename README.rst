@@ -1,29 +1,36 @@
-=================
-cmsplugin_gallery
-=================
+=======================
+cmsplugin_gallery_filer
+=======================
 
-cmsplugin_gallery adds simple gallery plugin to your djangoCMS installation
+cmsplugin_gallery_filer adds simple gallery plugin to your djangoCMS
+installation
 
 Features:
 
 - Drag&Drop reordering of photos in the plugin admin
 - Unlimited, auto-discovered custom templates - you can change template
-   of given gallery at anytime, use javascript galleries etc.
+  of given gallery at anytime, use javascript galleries etc.
+- Uses django-filer for storing images.
+
+This plugin is a fork of http://github.com/centralniak/cmsplugin_gallery to
+add filer support. To get a django-filer_ free version go to the original
+plugin by Piotr Kilczuk.
 
 Contributions and comments are welcome using Github at:
-http://github.com/centralniak/cmsplugin_gallery
+http://github.com/shagi/cmsplugin_gallery_filer
 
-Please not that cmsplugin_gallery requires:
+Please not that cmsplugin_gallery_filer requires:
 
 - django-inline-ordering http://pypi.python.org/pypi/django-inline-ordering/
 - easy-thumbnails http://pypi.python.org/pypi/easy-thumbnails/
+- django-filer http://pypi.python.org/pypi/django-filer/
 
 Installation
 ============
 
-#. `pip install cmsplugin_gallery`
+#. `pip install cmsplugin_gallery_filer`
 #. Add `'cmsplugin_gallery'` to `INSTALLED_APPS` (if necessary)
-#. Run `syncdb` or `cmsplugin_gallery` if using SOuth
+#. Run `syncdb` or `migrate cmsplugin_gallery` if using South
 
 Configuration
 =============
@@ -60,7 +67,8 @@ Bugs & Contribution
 ===================
 
 Please use Github to report bugs, feature requests and submit your code:
-http://github.com/centralniak/cmsplugin_gallery
+http://github.com/shagi/cmsplugin_gallery_filer
 
-:author: Piotr Kilczuk
-:date: 2012/01/31
+:date: 2012/08/01
+
+.. _django-filer: https://github.com/stefanfoulis/django-filer/
