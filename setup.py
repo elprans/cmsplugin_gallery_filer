@@ -4,7 +4,7 @@ from setuptools import find_packages, setup
 
 setup(
     name='cmsplugin_gallery_filer',
-    version='0.5.2',
+    version='0.5.2.1',
     author='GISA Elkartea',
     author_email='kontaktua@gisa-elkartea.org',
     url='http://lagunak.gisa-elkartea.org/projects/cmsplugin-gallery-filer',
