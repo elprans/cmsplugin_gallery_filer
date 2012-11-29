@@ -38,7 +38,8 @@ def autodiscover_templates():
 #    ]
 
     dirs_to_scan = []
-    if 'django.template.loaders.app_directories.Loader' in settings.TEMPLATE_LOADERS:
+    if 'django.template.loaders.app_directories.Loader' in settings.TEMPLATE_LOADERS or \
+       'yammy.django_loaders.YammyFileSystemLoader' in settings.TEMPLATE_LOADERS:
         for app in settings.INSTALLED_APPS:
             _ = __import__(app)
             dir = os.path.dirname(_.__file__)
@@ -46,7 +47,8 @@ def autodiscover_templates():
                 #append 'templates' for app directories
                 dirs_to_scan.append(os.path.join(dir, 'templates'))
 
-    if 'django.template.loaders.filesystem.Loader' in settings.TEMPLATE_LOADERS:
+    if 'django.template.loaders.filesystem.Loader' in settings.TEMPLATE_LOADERS or \
+       'yammy.django_loaders.YammyFileSystemLoader' in settings.TEMPLATE_LOADERS:
         for dir in settings.TEMPLATE_DIRS:
             if not dir in dirs_to_scan:
                 #filesystem loader assumes our templates in 'templates' already
@@ -65,4 +67,5 @@ def autodiscover_templates():
                 templates.append((key, value,))
             #print os.path.basename(file)
 
+    print(templates)
     return sorted_templates(templates)
