@@ -67,5 +67,4 @@ def autodiscover_templates():
                 templates.append((key, value,))
             #print os.path.basename(file)
 
-    print(templates)
     return sorted_templates(templates)
