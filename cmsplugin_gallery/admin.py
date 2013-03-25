@@ -1,7 +1,6 @@
 from cms.utils import cms_static_url
 from inline_ordering.admin import OrderableStackedInline, INLINE_ORDERING_JS
-import forms
-import models
+from cmsplugin_gallery import forms, models
 
 
 class ImageInline(OrderableStackedInline):
