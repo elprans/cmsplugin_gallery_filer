@@ -1,4 +1,5 @@
 import glob
+import importlib
 import os
 import threading
 
@@ -41,7 +42,7 @@ def autodiscover_templates():
     if 'django.template.loaders.app_directories.Loader' in settings.TEMPLATE_LOADERS or \
        'yammy.django_loaders.YammyFileSystemLoader' in settings.TEMPLATE_LOADERS:
         for app in settings.INSTALLED_APPS:
-            _ = __import__(app)
+            _ = importlib.import_module(app)
             dir = os.path.dirname(_.__file__)
             if not dir in dirs_to_scan:
                 #append 'templates' for app directories
