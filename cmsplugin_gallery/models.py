@@ -1,6 +1,6 @@
 import threading
 
-from cms.models import CMSPlugin
+from cms.models import CMSPlugin, Page
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from inline_ordering.models import Orderable
@@ -44,7 +44,18 @@ class Image(Orderable):
     src_height = models.PositiveSmallIntegerField(_("Image height"), editable=False, null=True)
     src_width = models.PositiveSmallIntegerField(_("Image height"), editable=False, null=True)
     title = models.CharField(_("Title"), max_length=255, blank=True)
-    alt = models.TextField(_("Alt text"), blank=True)
+    alt = models.TextField(_("Alt text"), blank=True, help_text=_("textual description of the image"))
+    url = models.CharField(_("link"), max_length=255, blank=True, null=True, help_text=_("if present image will be clickable"))
+    page_link = models.ForeignKey(Page, verbose_name=_("page"), null=True, blank=True, help_text=_("if present image will be clickable"))
 
     def __unicode__(self):
         return self.title or self.alt or str(self.pk)
+
+    def get_link(self):
+        if self.url:
+            link = self.url
+        elif self.page_link:
+            link = self.page_link.get_absolute_url()
+        else:
+            link = ""
+        return link
